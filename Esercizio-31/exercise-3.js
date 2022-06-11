@@ -1,9 +1,8 @@
 function calculateAverageAge(persons) {
-  let sum=0;
-  for(i=0; i<persons.length; i++){
-    sum += persons[i].age
-  }
-  return sum / persons.length;
+  const average = persons.reduce(
+    (result, sum) => result + sum.age, 0
+    ) / persons.length;
+  return average;
 }
 
 const persons = [

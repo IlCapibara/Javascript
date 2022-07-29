@@ -10,7 +10,7 @@ class BankAccount {
   deposit(amount) {
     // throw an exception if amount is negative
     if(amount<0){
-      console.log('ERROR');
+      throw new Error('Error!');;
     } else{
       this.#amount += amount;
     }
@@ -19,7 +19,7 @@ class BankAccount {
   withdraw(amount) {
     // throw an exception if amount is negative or if withdrawal amount is greater than current amount
     if(amount<0, amount>this.#amount){
-      console.log('ERROR');
+      throw new Error('Error!');
     }else{
       this.#amount -= amount;
     }

@@ -1,0 +1,45 @@
+<html>
+  <body>
+    <div id="container">
+      <form>
+        <div>
+          <label>Title</label>
+          <input type="text" id="todo-title" />
+        </div>
+        <div>
+          <label>Completed</label>
+          <input type="checkbox" id="todo-completed" />
+        </div>
+
+        <button type="submit" id="submit-todo"></button>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+  const form = document.querySelector("form");
+  form.addEventListener("submit", createPost)
+
+  async function createPost(event) {
+    event.preventDefault(); 
+
+    let title = document.getElementById("todo-title")
+    let checkbox = document.getElementById("todo-completed")
+    
+    let post = {
+      title: title.value,
+      flag: checkbox.value
+    }
+
+    let fetch = await fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json;charset=utf-8' },
+      body: JSON.stringify(post)
+    })
+    
+    console.log(fetch);
+    let sentPost = await fetch.json()
+    console.log(sentPost);
+  }
+</script>
